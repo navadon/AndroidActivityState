@@ -17,15 +17,14 @@ public class MainActivity extends AppCompatActivity {
     private EditText etString;
     private TextView tvOutput;
 
+    // string to be saved
     private String myString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); // Always call the superclass first
         setContentView(R.layout.activity_main);
-
-        etString = (EditText) findViewById(R.id.et_string);
-        tvOutput = (TextView) findViewById(R.id.tv_output);
+        bindView();
 
         // Check whether we're recreating a previously destroyed instance
         if (savedInstanceState != null) {
@@ -41,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void bindView(){
+        etString = (EditText) findViewById(R.id.et_string);
+        tvOutput = (TextView) findViewById(R.id.tv_output);
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         // Always call the superclass so it can save the view hierarchy state
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         // This bundle will be passed to onCreate if the process is
         // killed and restarted.
 
-        //outState.putVarType("VarName", "VarValue");
+        //Format: outState.putVarType("VarName", "VarValue");
         outState.putString("mySavedString", myString);
         Log.d(TAG, "onSaveInstanceState() called with: outState = [" + outState + "]");
     }
@@ -63,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         // Restore UI state from the savedInstanceState.
         // This bundle has also been passed to onCreate.
 
-        myString = savedInstanceState.getString("mySavedString"); //VarType varName = savedInstanceState.getVarType("VarName");
+        // Format: VarType varName = savedInstanceState.getVarType("VarName");
+        myString = savedInstanceState.getString("mySavedString");
         Log.d(TAG, "onRestoreInstanceState() called with: savedInstanceState = [" + savedInstanceState + "]");
         Log.d(TAG, "onRestoreInstanceState() called with: myString = [" + myString + "]");
     }
