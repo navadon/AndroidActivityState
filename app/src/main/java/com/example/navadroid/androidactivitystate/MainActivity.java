@@ -26,18 +26,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bindView();
 
+        // No need to use this if we implement onRestoreInstanceState
         // Check whether we're recreating a previously destroyed instance
-        if (savedInstanceState != null) {
-            // Restore value of members from saved state
-            myString = savedInstanceState.getString("mySavedString");
-            Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
-            Log.d(TAG, "onCreate() called with: myString = [" + myString + "]");
-        }
-       else {
-            // Probably initialize members with default values for a new instance
-            myString = null;
-            Log.d(TAG, "onCreate() called with: myString = [" + myString + "]");
-        }
+//        if (savedInstanceState != null) {
+//            // Restore value of members from saved state
+//            //myString = savedInstanceState.getString("mySavedString");
+//            Log.d(TAG, "onCreate() called with: savedInstanceState = [" + savedInstanceState + "]");
+//            Log.d(TAG, "onCreate() called with: myString = [" + myString + "]");
+//        }
+//       else {
+//            // Probably initialize members with default values for a new instance
+//            myString = null;
+//            Log.d(TAG, "onCreate() called with: myString = [" + myString + "]");
+//        }
     }
 
     private void bindView(){
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        resetView();
+        //resetView();
         Log.d(TAG, "onResume() called");
     }
 
